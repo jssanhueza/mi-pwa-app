@@ -1,25 +1,29 @@
-const CACHE = "mi-pwa-cache-v1";
-
+const CACHE_NAME = 'v1_mi_pwa';
 const urlsToCache = [
-  "/mi-pwa-app/",
-  "/mi-pwa-app/index.html",
-  "/mi-pwa-app/style.css",
-  "/mi-pwa-app/app.js",
-  "/mi-pwa-app/manifest.json"
+  './',
+  './index.html',
+  './manifest.json'
 ];
 
-self.addEventListener("install", event => {
-  event.waitUntil(
-    caches.open(CACHE).then(cache => {
-      return cache.addAll(urlsToCache);
-    })
+// Instalación del Service Worker
+self.addEventListener('install', e => {
+  e.waitUntil(
+    caches.open(CACHE_NAME)
+      .then(cache => {
+        return cache.addAll(urlsToCache)
+          .then(() => self.skipWaiting());
+      })
   );
 });
 
-self.addEventListener("fetch", event => {
-  event.respondWith(
-    caches.match(event.request).then(response => {
-      return response || fetch(event.request);
-    })
+// Activación
+self.addEventListener('activate', e => {
+  e.waitUntil(self.clients.claim());
+});
+
+// Evento Fetch (Crucial para que Chrome vea que es una PWA)
+self.addEventListener('fetch', e => {
+  e.respondWith(
+    fetch(e.request).catch(() => caches.match(e.request))
   );
 });
