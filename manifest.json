@@ -1,9 +1,10 @@
 {
 "name": "Mi App Proyect",
 "short_name": "MiApp",
-"start_url": "/",
+"start_url": "/mi-pwa-app/",
 "display": "standalone",
 "background_color": "#121212",
+"scope": "/mi-pwa-app/"
 "theme_color": "#4285f4",
 "icons": [
 {
