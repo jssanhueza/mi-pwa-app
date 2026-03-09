@@ -1,24 +1,40 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Portal RL169</title>
+  <title>RL_LEC169</title>
+  
+  <link rel="manifest" href="./manifest.json">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  
+
   <style>
-    body, html { margin: 0; padding: 0; height: 100%; width: 100%; overflow: hidden; background-color: #1a1a1a; }
-    iframe { border: none; width: 100%; height: 100%; }
+    /* Esto hace que el marco ocupe TODA la pantalla del celular */
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      width: 100%;
+      overflow: hidden; /* Evita doble scroll */
+      background-color: #1a1a1a; /* Color de fondo igual al de tu App Script */
+    }
+    
+    iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
   </style>
 </head>
 <body>
-  <iframe id="appFrame" src="https://script.google.com/macros/s/AKfycbxdc90cM4sjKvYbI3Me01OigVegvSZbpIYyeq8CtK5UWQPjeZYcwij_nCQ1BLBsThLZ8Q/exec?mode=pwa"></iframe>
+  <iframe src="https://script.google.com/macros/s/AKfycbxdc90cM4sjKvYbI3Me01OigVegvSZbpIYyeq8CtK5UWQPjeZYcwij_nCQ1BLBsThLZ8Q/exec"></iframe>
 
   <script>
-    // Si detectamos que no puede cargar el correo, podrías añadir un mensaje aquí.
-    // Pero la clave real está en la configuración del Script de Google.
   </script>
 </body>
 </html>
